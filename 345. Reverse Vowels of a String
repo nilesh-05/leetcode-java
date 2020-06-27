@@ -1,0 +1,23 @@
+class Solution {
+    public String reverseVowels(String s) {
+       char[] str = s.toCharArray();   // converting given string to char array for vowel char reverse
+       int left = 0;  //left most index
+	   int right = str.length-1; //right most index
+        while(left<right){ //traversing the string till the string is completely reversed
+            if(!isMatch(str[left])) // finding the left vowel index
+                left++;
+            else if(!isMatch(str[right])) // finding the right vowel index
+                right--;
+            else  // left and right vowel index is found then swapping is carried here
+            {
+                str[left]+=str[right]-(str[right]=str[left]);  // swapping
+                left++;   // after doing shifing(increment) the pointers to look for next vowel 
+                right--;  // / after doing shifing(decrement) the pointers to look for next vowel 
+            }
+        }
+        return new String(str);  // returning modified string
+    }
+    static boolean isMatch(char s){
+    return s=='a'||s=='e'||s=='i'||s=='o'||s=='u'||s=='A'||s=='E'||s=='I'||s=='O'||s=='U';
+    }
+}
