@@ -9,3 +9,8 @@ class Solution {
         return result;
     }
 }
+
+
+/*The solution is based on the idea that every encounter of a multiple of 5 increases the count of trailing zeros by 1. On examining larger numbers we understand that 
+whenever powers of 5 ( 5 x 5, 5 x 5 x 5, 5 x 5 x 5) and its multiples ( 25 * 2, 25 * 3, 25 * 4, 625 * 2, 625 * 3) etc are encountered, it adds an additional count to 
+the result. This observation means that we need to check the number of times 'n' can be divided by each power of 5 and then add to the result.*/
