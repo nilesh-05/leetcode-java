@@ -10,3 +10,5 @@ class Solution {
         return false;
     }
 }
+
+//more efficient method to be added.
