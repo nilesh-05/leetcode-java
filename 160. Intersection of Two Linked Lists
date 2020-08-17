@@ -1,0 +1,16 @@
+public class Solution {
+    public ListNode getIntersectionNode(ListNode head1, ListNode head2) {
+        if(head1 == null || head2 == null)  return null;
+        ListNode ptrA = head1;
+        ListNode ptrB = head2;
+        while(ptrA != ptrB){
+            ptrA = ptrA.next;
+            ptrB = ptrB.next;
+            
+            if(ptrA == ptrB)    return ptrA;
+            if(ptrA == null)    ptrA = head2;
+            if(ptrB == null)    ptrB = head1;
+        }
+        return ptrA;
+    }
+}
