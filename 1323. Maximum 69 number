@@ -1,0 +1,48 @@
+class Solution {
+    public int maximum69Number (int num) {
+      
+      // goal: change the first 6 to a 9, if possible
+      
+      // make an array
+      int[] resultArray = new int[returnNumberOfDigits(num)];
+      
+      // traverse digits of number
+      int divisor = (int)Math.pow(10, resultArray.length + 1);
+      int traversalIndex = 0;
+      int curDigit;
+      boolean madeFlip = false;
+      
+      do {
+        divisor /= 10;
+        curDigit = (num % divisor) / (divisor / 10);
+
+        if (curDigit == 6 && !madeFlip) {
+          resultArray[traversalIndex++] = 9;
+          madeFlip = true;
+        } else {
+          resultArray[traversalIndex++] = curDigit;
+        }
+      } while (divisor > 10);      
+      
+      // convert array to number
+      int resultInt = 0;
+      for (int i = 0; i < resultArray.length; ++i) {
+        resultInt += resultArray[i] * Math.pow(10, resultArray.length - i - 1);
+      }
+      
+      return resultInt;
+    }
+
+  
+    int returnNumberOfDigits(int n) {
+      int numDigits = 0;
+      int divisor = 1;
+      
+      do {
+        divisor *= 10;
+        ++numDigits;
+      } while (n / divisor > 0);
+      
+      return numDigits;
+    }
+}
